@@ -21,6 +21,9 @@ $url = ControladorPlantilla::url();
                   $rutas = explode('/', $_GET["pagina"]);
                   if (
                       $rutas[0] == "clientes" ||
+                      $rutas[0] == "entrenadores" ||
+                      $rutas[0] == "agregar_entrenador" ||
+                      $rutas[0] == "editar_entrenador" ||
                       $rutas[0] == "editar_cliente" ||
                       $rutas[0] == "agregar_cliente"
                   ) {
