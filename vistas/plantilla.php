@@ -22,8 +22,14 @@ $url = ControladorPlantilla::url();
                   if (
                       $rutas[0] == "clientes" ||
                       $rutas[0] == "entrenadores" ||
+                      $rutas[0] == "pagos" ||
+                      $rutas[0] == "planes" ||
                       $rutas[0] == "agregar_entrenador" ||
+                      $rutas[0] == "agregar_pago" ||
+                      $rutas[0] == "agregar_plan" ||
                       $rutas[0] == "editar_entrenador" ||
+                      $rutas[0] == "editar_plan" ||
+                      $rutas[0] == "editar_pago" ||
                       $rutas[0] == "editar_cliente" ||
                       $rutas[0] == "agregar_cliente"
                   ) {

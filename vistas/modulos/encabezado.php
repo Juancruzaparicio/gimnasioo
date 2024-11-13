@@ -219,7 +219,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="?c=pago" class="nav-link">
+            <a href="pagos" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Pagos
@@ -229,7 +229,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="?c=plan" class="nav-link">
+            <a href="planes" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Planes
