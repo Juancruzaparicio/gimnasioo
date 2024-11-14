@@ -25,10 +25,10 @@
                     foreach ($pagos as $key => $pago) {
                         ?>
                   <tr>
-                  <td> <?php echo $pago["id_cliente"] ?></td>
+                  <td> <?php echo $pago["nombre"] ?> <?php echo $pago["apellido"] ?></td>
                   <td> <?php echo $pago["monto_pagado"] ?></td>
                   <td> <?php echo $pago["metodo_pago"] ?></td>
-                  <td> <?php echo $pago["id_plan"] ?></td>
+                  <td> <?php echo $pago["nombre_plan"] ?></td>
                   <td> <?php echo $pago["estado_pago"] ?></td>
                   <td> <?php echo $pago["fecha_pago"] ?></td>
                     <td><a class="btn btn-block bg-gradient-primary btn-sm" href="index.php?pagina=editar_pago&id_pago=<?php echo $pago["id_pago"]?>">

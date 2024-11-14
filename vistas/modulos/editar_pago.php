@@ -4,6 +4,8 @@ $item = "id_pago";
 $valor = $_GET["id_pago"];
 
 $pago = ControladorPagos::ctrMostrarPagos($item, $valor);
+$planes = ControladorPlanes::ctrMostrarPlanes(null, null);
+$clientes = ControladorClientes::ctrMostrarClientes(null, null);
 
 
 ?> 
@@ -24,9 +26,18 @@ $pago = ControladorPagos::ctrMostrarPagos($item, $valor);
               <form method="POST">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="cliente">Cliente</label>
-                    <input required type="number" class="form-control" name="cliente" placeholder="cliente"
-                    value="<?php echo $pago["id_cliente"]; ?>">
+                    <label for="cliente" class="form-label">clientes</label>
+                    <select class="form-select" name="cliente" id="id_plan" required>
+
+                        <option value="<?php echo $pago["id_cliente"]; ?>">Selecciona una opción</option>
+
+                        <?php foreach ($clientes as $key => $cliente) { ?>
+
+                            <option value="<?php echo $cliente["id_cliente"]; ?>"><?php echo $cliente["nombre"]; ?> <?php echo $cliente["apellido"]; ?></option>
+
+                        <?php } ?>
+
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="monto">Monto</label>
@@ -39,9 +50,18 @@ $pago = ControladorPagos::ctrMostrarPagos($item, $valor);
                     value="<?php echo $pago["metodo_pago"]; ?>">
                   </div>
                   <div class="form-group">
-                    <label for="plan">Plan</label>
-                    <input required type="number" class="form-control" name="plan" placeholder="plan"
-                    value="<?php echo $pago["id_plan"]; ?>">
+                    <label for="plan" class="form-label">Planes</label>
+                    <select class="form-select" name="plan" id="id_plan" required>
+
+                        <option value="<?php echo $pago["id_plan"]; ?>">Selecciona una opción</option>
+
+                        <?php foreach ($planes as $key => $plan) { ?>
+
+                            <option value="<?php echo $plan["id_plan"]; ?>"><?php echo $plan["nombre"]; ?></option>
+
+                        <?php } ?>
+
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="estado">Estado</label>

@@ -19,7 +19,7 @@ class ModeloPlanes{
         } else {
 
             try {
-                $planes = Conexion::Conectar()->prepare("SELECT * FROM plan_entrenamiento;");
+                $planes = Conexion::Conectar()->prepare("SELECT p.id_plan, p.nombre, p.codigo, p.descripcion, p.duracion_semanas, p.cantidadsesiones_semana, e.nombre AS nombre_entrenador, e.apellido AS apellido_entrenador FROM plan_entrenamiento AS p INNER JOIN entrenadores AS e ON e.id_entrenador = p.id_entrenador;");
                 $planes->execute();
 
                 return $planes->fetchAll(PDO::FETCH_ASSOC);

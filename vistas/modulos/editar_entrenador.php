@@ -4,6 +4,7 @@ $item = "id_entrenador";
 $valor = $_GET["id_entrenador"];
 
 $entrenador = ControladorEntrenadores::ctrMostrarEntrenador($item, $valor);
+$especialidades = ControladorEspecialidades::ctrMostrarEspecialidades(null, null);
 
 
 ?>
@@ -49,9 +50,18 @@ $entrenador = ControladorEntrenadores::ctrMostrarEntrenador($item, $valor);
                     value="<?php echo $entrenador["mail"]; ?>">
                   </div>
                   <div class="form-group">
-                    <label for="id_especialidad">Especialidad</label>
-                    <input required type="text" class="form-control" name="id_especialidad" placeholder="especialidad" 
-                    value="<?php echo $entrenador["especialidad"]; ?>">
+                  <label for="id_especialidad" class="form-label">Especialidades</label>
+                    <select class="form-select" name="id_especialidad" id="id_especialidad" required>
+
+                        <option value="<?php echo $entrenador["especialidad"]; ?>">Selecciona una opción</option>
+
+                        <?php foreach ($especialidades as $key => $especialidad) { ?>
+
+                            <option value="<?php echo $especialidad["id_especialidad"]; ?>"><?php echo $especialidad["nombre"]; ?></option>
+
+                        <?php } ?>
+
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="fecha_contratacion_entrenador">Fecha de contratacion</label>

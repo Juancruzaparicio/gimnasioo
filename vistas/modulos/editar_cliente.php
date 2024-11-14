@@ -4,6 +4,7 @@ $item = "id_cliente";
 $valor = $_GET["id_cliente"];
 
 $cliente = ControladorClientes::ctrMostrarClientes($item, $valor);
+$planes = ControladorPlanes::ctrMostrarPlanes(null, null);
 
 
 ?>
@@ -64,9 +65,18 @@ $cliente = ControladorClientes::ctrMostrarClientes($item, $valor);
                     value="<?php echo $cliente["fecha_inscripcion"]; ?>">
                   </div>
                   <div class="form-group">
-                    <label for="id_plan_cliente">Plan</label>
-                    <input required type="number" class="form-control" name="id_plan_cliente" placeholder="Plan" 
-                    value="<?php echo $cliente["id_plan"]; ?>">
+                  <label for="id_plan_cliente" class="form-label">Planes</label>
+                    <select  name="id_plan_cliente" id="id_plan" class="form-select" required>
+
+                        <option value="<?php echo $cliente["id_plan"]; ?>">Selecciona una opción</option>
+
+                        <?php foreach ($planes as $key => $plan) { ?>
+
+                            <option value="<?php echo $plan["id_plan"]; ?>"><?php echo $plan["nombre"]; ?></option>
+
+                        <?php } ?>
+
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="estado_cliente">Estado</label>

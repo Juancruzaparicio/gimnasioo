@@ -19,7 +19,7 @@ class ModeloEntrenadores{
         } else {
 
             try {
-                $entrenadores = Conexion::Conectar()->prepare("SELECT * FROM entrenadores;");
+                $entrenadores = Conexion::Conectar()->prepare("SELECT e.id_entrenador, e.dni, e.nombre, e.apellido, e.telefono, e.mail, e2.nombre AS nombre_especialidad, e.fecha_contratacion, estado FROM entrenadores as e INNER JOIN especialidades AS e2 WHERE e2.id_especialidad = e.especialidad;");
                 $entrenadores->execute();
 
                 return $entrenadores->fetchAll(PDO::FETCH_ASSOC);

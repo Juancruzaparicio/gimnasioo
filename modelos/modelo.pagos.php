@@ -19,7 +19,7 @@ class ModeloPagos{
         } else {
 
             try {
-                $pagos = Conexion::Conectar()->prepare("SELECT * FROM pagos;");
+                $pagos = Conexion::Conectar()->prepare("SELECT p.id_pago, c.nombre, c.apellido, p.monto_pagado, p.metodo_pago, p2.nombre AS nombre_plan, p.estado_pago, fecha_pago FROM pagos AS p INNER JOIN clientes AS c ON c.id_cliente = p.id_cliente INNER JOIN plan_entrenamiento AS p2 ON p2.id_plan = p.id_plan;");
                 $pagos->execute();
 
                 return $pagos->fetchAll(PDO::FETCH_ASSOC);

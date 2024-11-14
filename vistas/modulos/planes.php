@@ -30,7 +30,7 @@
                   <td> <?php echo $plan["descripcion"] ?></td>
                   <td> <?php echo $plan["duracion_semanas"] ?> semanas</td>
                   <td> <?php echo $plan["cantidadsesiones_semana"] ?> X semana</td>
-                  <td> <?php echo $plan["id_entrenador"] ?></td>
+                  <td> <?php echo $plan["nombre_entrenador"] ?> <?php echo $plan["apellido_entrenador"] ?></td>
                     <td><a class="btn btn-block bg-gradient-primary btn-sm" href="index.php?pagina=editar_plan&id_plan=<?php echo $plan["id_plan"]?>">
                           <i class="fas fa-edit"></i>
                         </a>

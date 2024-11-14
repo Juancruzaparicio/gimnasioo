@@ -37,7 +37,7 @@
                   <td> <?php echo $cliente["fecha_nacimiento"] ?></td>
                   <td> <?php echo $cliente["direccion"] ?> </td>
                   <td> <?php echo $cliente["fecha_inscripcion"] ?></td>
-                  <td> <?php echo $cliente["id_plan"] ?></td>
+                  <td> <?php echo $cliente["nombre_plan"] ?></td>
                   <td> <?php echo $cliente["estado"] ?></td>
                     <td><a class="btn btn-block bg-gradient-primary btn-sm" href="index.php?pagina=editar_cliente&id_cliente=<?php echo $cliente["id_cliente"]?>">
                           <i class="fas fa-edit"></i>

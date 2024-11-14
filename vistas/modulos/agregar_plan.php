@@ -1,4 +1,9 @@
+<?php
 
+$entrenadores = ControladorEntrenadores::ctrMostrarEntrenador(null, null);
+
+
+?>
 
     <!-- Main content -->
     <section class="content">
@@ -37,8 +42,18 @@
                     <input required type="number" class="form-control" name="cantidad" placeholder="Cantidad">
                   </div>
                   <div class="form-group">
-                    <label for="entrenador">Entrenador</label>
-                    <input required type="text" class="form-control" name="entrenador" placeholder="Entrenador">
+                    <label for="entrenador" class="form-label">Entrenador</label>
+                    <select class="form-select" name="entrenador" id="entrenador" required>
+
+                        <option value="">Selecciona una opción</option>
+
+                        <?php foreach ($entrenadores as $key => $entrenador) { ?>
+
+                            <option value="<?php echo $entrenador["id_entrenador"]; ?>"><?php echo $entrenador["nombre"]; ?> <?php echo $entrenador["apellido"]; ?></option>
+
+                        <?php } ?>
+
+                    </select>
                   </div>
                   
                 </div>

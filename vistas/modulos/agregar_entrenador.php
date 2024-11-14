@@ -1,4 +1,8 @@
+<?php
 
+$especialidades = ControladorEspecialidades::ctrMostrarEspecialidades(null, null);
+
+?>
 
     <!-- Main content -->
     <section class="content">
@@ -37,8 +41,18 @@
                     <input required type="text" class="form-control" name="mail_entrenador" placeholder="Mail">
                   </div>
                   <div class="form-group">
-                    <label for="id_especialidad">Especialidad</label>
-                    <input required type="number" class="form-control" name="id_especialidad" placeholder="especialidad">
+                  <label for="id_especialidad" class="form-label">Especialidades</label>
+                    <select class="form-select" name="id_especialidad" id="id_especialidad" required>
+
+                        <option value="">Selecciona una opción</option>
+
+                        <?php foreach ($especialidades as $key => $especialidad) { ?>
+
+                            <option value="<?php echo $especialidad["id_especialidad"]; ?>"><?php echo $especialidad["nombre"]; ?></option>
+
+                        <?php } ?>
+
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="fecha_contratacion_entrenador">Fecha de contratacion</label>

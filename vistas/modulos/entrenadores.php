@@ -32,7 +32,7 @@
                   <td> <?php echo $entrenador["apellido"] ?></td>
                   <td> <?php echo $entrenador["telefono"] ?></td>
                   <td> <?php echo $entrenador["mail"] ?></td>
-                  <td> <?php echo $entrenador["especialidad"] ?></td>
+                  <td> <?php echo $entrenador["nombre_especialidad"] ?></td>
                   <td> <?php echo $entrenador["fecha_contratacion"] ?> </td>
                   <td> <?php echo $entrenador["estado"] ?></td>
                     <td><a class="btn btn-block bg-gradient-primary btn-sm" href="index.php?pagina=editar_entrenador&id_entrenador=<?php echo $entrenador["id_entrenador"]?>">

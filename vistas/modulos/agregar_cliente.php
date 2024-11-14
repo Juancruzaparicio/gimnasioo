@@ -1,4 +1,8 @@
+<?php
 
+$planes = ControladorPlanes::ctrMostrarPlanes(null, null);
+
+?>
 
     <!-- Main content -->
     <section class="content">
@@ -49,8 +53,18 @@
                     <input type="text" class="form-control" name="fecha_inscripcion_cliente" placeholder="Fecha de inscripcion" >
                   </div>
                   <div class="form-group">
-                    <label for="id_plan_cliente">Plan</label>
-                    <input required type="number" class="form-control" name="id_plan_cliente" placeholder="Plan" >
+                  <label for="id_plan_cliente" class="form-label">Planes</label>
+                    <select class="form-select" name="id_plan_cliente" id="id_plan" required>
+
+                        <option value="">Selecciona una opción</option>
+
+                        <?php foreach ($planes as $key => $plan) { ?>
+
+                            <option value="<?php echo $plan["id_plan"]; ?>"><?php echo $plan["nombre"]; ?></option>
+
+                        <?php } ?>
+
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="estado_cliente">Estado</label>

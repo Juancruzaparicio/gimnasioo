@@ -19,7 +19,7 @@ class ModeloClientes{
         } else {
 
             try {
-                $clientes = Conexion::Conectar()->prepare("SELECT * FROM clientes;");
+                $clientes = Conexion::Conectar()->prepare("SELECT c.id_cliente, c.dni, c.nombre, c.apellido, c.telefono, c.mail, c.fecha_nacimiento, c.direccion, c.fecha_inscripcion, c.id_plan, c.estado, p.nombre as nombre_plan FROM clientes as c INNER JOIN plan_entrenamiento as p ON p.id_plan = c.id_plan;");
                 $clientes->execute();
 
                 return $clientes->fetchAll(PDO::FETCH_ASSOC);
