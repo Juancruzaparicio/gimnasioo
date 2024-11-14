@@ -1,10 +1,5 @@
 <?php
 session_start();
-if (isset($_SESSION["iniciarSesion"])) {
-  echo "Sesión iniciada correctamente.";
-} else {
-  echo "Error: sesión no iniciada.";
-}
 $url = ControladorPlantilla::url();
 
 ?>
@@ -33,6 +28,7 @@ $url = ControladorPlantilla::url();
                       $rutas[0] == "especialidades" ||
                       $rutas[0] == "usuarios" ||
                       $rutas[0] == "agregar_entrenador" ||
+                      $rutas[0] == "agregar_usuarios" ||
                       $rutas[0] == "agregar_pago" ||
                       $rutas[0] == "agregar_plan" ||
                       $rutas[0] == "agregar_especialidad" ||
@@ -42,6 +38,7 @@ $url = ControladorPlantilla::url();
                       $rutas[0] == "editar_cliente" ||
                       $rutas[0] == "editar_especialidad" ||
                       $rutas[0] == "editar_usuario" ||
+                      $rutas[0] == "salir" ||
                       $rutas[0] == "agregar_cliente"
                   ) {
                       include "vistas/modulos/" . $rutas[0] . ".php";

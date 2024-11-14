@@ -30,12 +30,12 @@
                     <td><a class="btn btn-block bg-gradient-primary btn-sm" href="index.php?pagina=editar_usuario&id_usuario=<?php echo $usuario["id_usuario"]?>">
                           <i class="fas fa-edit"></i>
                         </a>
-                        <a class="btn btn-block bg-gradient-primary btn-sm btnEliminarPlan" id_usuario=<?php echo $usuario["id_usuario"]; ?>>
+                        <a class="btn btn-block bg-gradient-primary btn-sm btnEliminarUsuario" id_usuario=<?php echo $usuario["id_usuario"]; ?>>
                           <i class="fas fa-trash"></i>
                         </a>
                   </tr>
                   <?php } ?>
-                  <a class="btn btn-app" href="agregar_plan">
+                  <a class="btn btn-app" href="agregar_usuarios">
                   <i class="fas fa-plus"></i> Agregar</a>
                 </table>
               </div>
@@ -47,7 +47,7 @@
     </section>
     <?php
 
-$eliminar = new ControladorPlanes();
-$eliminar->ctrEliminarPlanes();
+$eliminar = new ControladorUsuarios();
+$eliminar->ctrEliminarUsuarios();
 
 ?>

@@ -177,9 +177,11 @@
         <div class="image">
           <img src="assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
+        <?php if(isset($_SESSION["id_usuario"])): ?>
         <div class="info">
           <a href="#" class="d-block"><?php echo $_SESSION["nombre_usuario"] . " " . $_SESSION["apellido_usuario"]; ?></a>
         </div>
+        <?php endif; ?>
       </div>
 
       <!-- SidebarSearch Form -->

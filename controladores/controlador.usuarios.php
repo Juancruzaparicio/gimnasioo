@@ -10,18 +10,20 @@ class ControladorUsuarios{
 
     static public function ctrLoginUsuarios()
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         if (isset($_POST["usuario"]) && isset($_POST["contrasena"])) {
             if (preg_match('/^[a-zA-Z0-9_]+$/', $_POST["usuario"])) {
 
                 $encriptar = password_hash(trim($_POST["contrasena"]), PASSWORD_BCRYPT);
                 $item = "username";
                 $valor = $_POST["usuario"];
+                var_dump($_POST["usuario"]);
                 $respuesta = ModeloUsuarios::mdlMostrarUsuarios(
                     $item,
                     $valor
                 );
-                var_dump($respuesta);
-
 
                 if ($respuesta && password_verify(trim($_POST["contrasena"]), $respuesta["contra"])) {
                     // Si la verificación es correcta
@@ -32,7 +34,10 @@ class ControladorUsuarios{
                 
                     echo '<script>window.location = "' . ControladorPlantilla::url() . '";</script>';
                 } else {
-                    // Si la verificación falla, muestra el error
+
+                    session_unset(); 
+                    session_destroy();
+                    session_start();
                     echo '<div class="alert alert-danger mt-3" role="alert">
                         Error al intentar acceder
                         </div>';
@@ -41,49 +46,54 @@ class ControladorUsuarios{
         }
     }
 
-    static public function ctrAgregarPlanes()
+    static public function ctrAgregarUsuarios()
     {
 
-        if (isset($_POST["nombre_plan"])) {
-            $tabla = "plan_entrenamiento";
+        if (isset($_POST["usuario"])) {
+            $tabla = "usuarios";
+
+            $contra_encriptada = password_hash($_POST["contrasena"], PASSWORD_DEFAULT);
 
             $datos = array(
-                "nombre" => $_POST["nombre_plan"],
-                "codigo" => $_POST["codigo_plan"],
-                "descripcion" => $_POST["descripcion_plan"],
-                "duracion_semanas" => $_POST["duracion"],
-                "cantidadsesiones_semana" => $_POST["cantidad"],
-                "id_entrenador" => $_POST["entrenador"]
-                
+                "username" => $_POST["usuario"],
+                "contra" => $contra_encriptada,
+                "nombre" => $_POST["nombre_usuario"],
+                "apellido" => $_POST["apellido_usuario"]
             );
 
-            //print_r($datos);
+            // print_r($datos);
 
-            $url = ControladorPlantilla::url() . "planes";
-            echo $url;
-            $respuesta = ModeloPlanes::mdlAgregarPlanes($tabla, $datos);
+            $url = ControladorPlantilla::url() . "usuarios";
+            $respuesta = ModeloUsuarios::mdlAgregarUsuarios($tabla, $datos);
+
             if ($respuesta == "ok") {
                 echo '<script>
                     Swal.fire({
                         icon: "success",
-                        title: "El Plan se agregó correctamente",
+                        title: "El cliente se agregó correctamente",
                         showConfirmButton: false,
                         timer: 1500
                     }).then(() => {
                         window.location.href = "' . $url . '";
                     });
                 </script>';
+            } else {
+                echo '<script>
+                    fncSweetAlert(
+                    "error",
+                    "Este usuario se encuentra en uso. Por favor, ingresa uno distinto!",
+                    "' . $_SERVER['HTTP_REFERER'] . '"
+                    );
+                    </script>';
             }
-
         }
     }
-
     static public function ctrEditarUsuarios()
     {
         $tabla = "usuarios";
 
         if (isset($_POST["id_usuario"])) {
-            $contra_encriptada = password_hash($_POST["contra_usuario"], PASSWORD_DEFAULT);
+            $contra_encriptada = password_hash($_POST["contra_usuario"], PASSWORD_BCRYPT);
             $datos = array(
                 "username" => $_POST["usuario"],
                 "contra" => $contra_encriptada,
@@ -113,21 +123,21 @@ class ControladorUsuarios{
         }
     }
 
-    static public function ctrEliminarPlanes()
+    static public function ctrEliminarUsuarios()
     {
-        if (isset($_GET["id_plan"])) {
+        if (isset($_GET["id_usuario"])) {
 
-            $url = ControladorPlantilla::url() . "planes";
-            $tabla = "plan_entrenamiento";
-            $datos = $_GET["id_plan"];
+            $url = ControladorPlantilla::url() . "usuarios";
+            $tabla = "usuarios";
+            $datos = $_GET["id_usuario"];
 
-            $respuesta = ModeloPlanes::mdlEliminarPlanes($tabla, $datos);
+            $respuesta = ModeloUsuarios::mdlEliminarUsuarios($tabla, $datos);
 
             if ($respuesta == "ok") {
                 echo '<script>
                     Swal.fire({
                         icon: "success",
-                        title: "El Plan se eliminó correctamente",
+                        title: "El Usuario se eliminó correctamente",
                         showConfirmButton: false,
                         timer: 1500
                     }).then(() => {
@@ -136,18 +146,6 @@ class ControladorUsuarios{
                 </script>';
             }
         }
-    }
-
-    static public function ctrSalir(){
-        
-        session_start(); // Start the session if it's not already started
-        session_destroy(); // Destroy the session to log out the user
-
-        // Redirect to the login page
-        echo '<script>
-        window.location = "' . ControladorPlantilla::url() . 'login"; // Ensure the correct path to your login page
-        </script>';
-        exit(); // Ensure the script stops executing after the redirect
     }
 
 }
