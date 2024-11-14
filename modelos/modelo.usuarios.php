@@ -2,27 +2,27 @@
 
 require_once 'conexion.php';
 
-class ModeloPlanes{
+class ModeloUsuarios{
 
-    static public function mdlMostrarPlanes($item, $valor){
+    static public function mdlMostrarUsuarios($item, $valor){
 
         if ($item != null){
             try{
-                $planes = Conexion::Conectar()->prepare("SELECT * FROM plan_entrenamiento WHERE $item = :$item;");
-                $planes->bindParam(":" . $item, $valor, PDO::PARAM_INT);
-                $planes->execute();
+                $usuarios = Conexion::Conectar()->prepare("SELECT * FROM usuarios WHERE $item = :$item;");
+                $usuarios->bindParam(":" . $item, $valor, PDO::PARAM_INT);
+                $usuarios->execute();
 
-                return $planes->fetch(PDO::FETCH_ASSOC);
+                return $usuarios->fetch(PDO::FETCH_ASSOC);
             } catch (Exception $e) {
                 return "Error: " . $e->getMessage();
             }
         } else {
 
             try {
-                $planes = Conexion::Conectar()->prepare("SELECT * FROM plan_entrenamiento;");
-                $planes->execute();
+                $usuarios = Conexion::Conectar()->prepare("SELECT * FROM usuarios;");
+                $usuarios->execute();
 
-                return $planes->fetchAll(PDO::FETCH_ASSOC);
+                return $usuarios->fetchAll(PDO::FETCH_ASSOC);
             } catch (Exception $e) {
                 return "Error: " . $e->getMessage();
             }
@@ -53,20 +53,18 @@ class ModeloPlanes{
         }
     }
 
-    static public function mdlEditarPlanes($tabla, $datos)
+    static public function mdlEditarUsuarios($tabla, $datos)
     {
         try {
-            $planes = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, codigo = :codigo, descripcion = :descripcion, duracion_semanas = :duracion_semanas, cantidadsesiones_semana = :cantidadsesiones_semana, id_entrenador = :id_entrenador WHERE id_plan = :id_plan");
+            $usuarios = Conexion::conectar()->prepare("UPDATE $tabla SET username = :username, contra = :contra, nombre = :nombre, apellido = :apellido WHERE id_usuario = :id_usuario");
 
-            $planes->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-            $planes->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
-            $planes->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
-            $planes->bindParam(":duracion_semanas", $datos["duracion_semanas"], PDO::PARAM_INT);
-            $planes->bindParam(":cantidadsesiones_semana", $datos["cantidadsesiones_semana"], PDO::PARAM_INT);
-            $planes->bindParam(":id_entrenador", $datos["id_entrenador"], PDO::PARAM_INT);
-            $planes->bindParam(":id_plan", $datos["id_plan"], PDO::PARAM_INT);
+            $usuarios->bindParam(":username", $datos["username"], PDO::PARAM_STR);
+            $usuarios->bindParam(":contra", $datos["contra"], PDO::PARAM_STR);
+            $usuarios->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+            $usuarios->bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
+            $usuarios->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT);
 
-            if ($planes->execute()) {
+            if ($usuarios->execute()) {
                 return "ok";
             } else {
 

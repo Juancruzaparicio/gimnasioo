@@ -82,21 +82,21 @@ class ControladorPlanes{
         }
     }
 
-    static public function ctrEliminarEntrenadores()
+    static public function ctrEliminarPlanes()
     {
-        if (isset($_GET["id_entrenador"])) {
+        if (isset($_GET["id_plan"])) {
 
-            $url = ControladorPlantilla::url() . "entrenadores";
-            $tabla = "entrenadores";
-            $datos = $_GET["id_entrenador"];
+            $url = ControladorPlantilla::url() . "planes";
+            $tabla = "plan_entrenamiento";
+            $datos = $_GET["id_plan"];
 
-            $respuesta = ModeloEntrenadores::mdlEliminarEntrenadores($tabla, $datos);
+            $respuesta = ModeloPlanes::mdlEliminarPlanes($tabla, $datos);
 
             if ($respuesta == "ok") {
                 echo '<script>
                     Swal.fire({
                         icon: "success",
-                        title: "El Entrenador se eliminó correctamente",
+                        title: "El Plan se eliminó correctamente",
                         showConfirmButton: false,
                         timer: 1500
                     }).then(() => {

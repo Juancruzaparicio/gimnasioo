@@ -178,7 +178,7 @@
           <img src="assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Aparicio Juan Cruz</a>
+          <a href="#" class="d-block"><?php echo $_SESSION["nombre_usuario"] . " " . $_SESSION["apellido_usuario"]; ?></a>
         </div>
       </div>
 
@@ -223,7 +223,6 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Pagos
-                <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
@@ -233,6 +232,34 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Planes
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="especialidades" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Especialidades
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="usuarios" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Usuarios
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="salir" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Salir
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>

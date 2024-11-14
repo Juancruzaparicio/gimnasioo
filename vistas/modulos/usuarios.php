@@ -4,37 +4,33 @@
           <div class="col-12">
             <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Planes de entrenamiento:</h3>
+                <h3 class="card-title">Usuarios:</h3>
               </div>
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
+                    <th>Nombre de usuario</th>
+                    <th>Contraseña</th>
                     <th>Nombre</th>
-                    <th>Codigo</th>
-                    <th>Descripcion</th>
-                    <th>Duracion (semanas)</th>
-                    <th>Cantidad de sesiones X semana</th>
-                    <th>Entrenador</th>
+                    <th>Apellido</th>
                     <th>Acciones</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?php
-                    $planes = ControladorPlanes::ctrMostrarPlanes(null, null);
-                    foreach ($planes as $key => $plan) {
+                    $usuarios = ControladorUsuarios::ctrMostrarUsuarios(null, null);
+                    foreach ($usuarios as $key => $usuario) {
                         ?>
                   <tr>
-                  <td> <?php echo $plan["nombre"] ?></td>
-                  <td> <?php echo $plan["codigo"] ?></td>
-                  <td> <?php echo $plan["descripcion"] ?></td>
-                  <td> <?php echo $plan["duracion_semanas"] ?> semanas</td>
-                  <td> <?php echo $plan["cantidadsesiones_semana"] ?> X semana</td>
-                  <td> <?php echo $plan["id_entrenador"] ?></td>
-                    <td><a class="btn btn-block bg-gradient-primary btn-sm" href="index.php?pagina=editar_plan&id_plan=<?php echo $plan["id_plan"]?>">
+                  <td> <?php echo $usuario["username"] ?></td>
+                  <td> <?php echo $usuario["contra"] ?></td>
+                  <td> <?php echo $usuario["nombre"] ?></td>
+                  <td> <?php echo $usuario["apellido"] ?></td>
+                    <td><a class="btn btn-block bg-gradient-primary btn-sm" href="index.php?pagina=editar_usuario&id_usuario=<?php echo $usuario["id_usuario"]?>">
                           <i class="fas fa-edit"></i>
                         </a>
-                        <a class="btn btn-block bg-gradient-primary btn-sm btnEliminarPlan" id_plan=<?php echo $plan["id_plan"]; ?>>
+                        <a class="btn btn-block bg-gradient-primary btn-sm btnEliminarPlan" id_usuario=<?php echo $usuario["id_usuario"]; ?>>
                           <i class="fas fa-trash"></i>
                         </a>
                   </tr>
