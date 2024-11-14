@@ -34,6 +34,15 @@ class ControladorEspecialidades{
                         window.location.href = "' . $url . '";
                     });
                 </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al agregar la especialidad",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
             }
 
         }
@@ -67,6 +76,15 @@ class ControladorEspecialidades{
                     window.location.href = "' . $url . '";
                 });
             </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al editar la especialidad",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
             }
         }
     }
@@ -90,6 +108,15 @@ class ControladorEspecialidades{
                         timer: 1500
                     }).then(() => {
                         window.location.href = "' . $url . '";
+                    });
+                </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al eliminar la especialidad",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
                     });
                 </script>';
             }

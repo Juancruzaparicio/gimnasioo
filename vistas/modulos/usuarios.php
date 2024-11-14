@@ -1,4 +1,4 @@
-<section class="content">
+<section class="content" style="margin-top: 70px;">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
@@ -27,7 +27,7 @@
                   <td> <?php echo $usuario["contra"] ?></td>
                   <td> <?php echo $usuario["nombre"] ?></td>
                   <td> <?php echo $usuario["apellido"] ?></td>
-                    <td><a class="btn btn-block bg-gradient-primary btn-sm" href="index.php?pagina=editar_usuario&id_usuario=<?php echo $usuario["id_usuario"]?>">
+                    <td><a class="btn btn-block bg-gradient-primary btn-sm" href="index.php?pagina=editar_usuario&id_usuario=<?php echo $usuario["id_usuario"]?>&actual=<?php echo $usuario["contra"]?>">
                           <i class="fas fa-edit"></i>
                         </a>
                         <a class="btn btn-block bg-gradient-primary btn-sm btnEliminarUsuario" id_usuario=<?php echo $usuario["id_usuario"]; ?>>

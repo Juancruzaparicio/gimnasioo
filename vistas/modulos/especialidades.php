@@ -1,4 +1,4 @@
-<section class="content">
+<section class="content" style="margin-top: 70px;">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">

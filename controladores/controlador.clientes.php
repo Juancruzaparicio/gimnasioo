@@ -44,6 +44,15 @@ class ControladorClientes{
                         window.location.href = "' . $url . '";
                     });
                 </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al agregar el cliente",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
             }
 
         }
@@ -86,6 +95,15 @@ class ControladorClientes{
                     window.location.href = "' . $url . '";
                 });
             </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al editar el cliente",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
             }
         }
     }
@@ -109,6 +127,15 @@ class ControladorClientes{
                         timer: 1500
                     }).then(() => {
                         window.location.href = "' . $url . '";
+                    });
+                </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al eliminar el cliente",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
                     });
                 </script>';
             }

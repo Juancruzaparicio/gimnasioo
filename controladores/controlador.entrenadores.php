@@ -42,6 +42,15 @@ class ControladorEntrenadores{
                         window.location.href = "' . $url . '";
                     });
                 </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al agregar el entrenador",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
             }
 
         }
@@ -82,6 +91,15 @@ class ControladorEntrenadores{
                     window.location.href = "' . $url . '";
                 });
             </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al editar el entrenador",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
             }
         }
     }
@@ -105,6 +123,15 @@ class ControladorEntrenadores{
                         timer: 1500
                     }).then(() => {
                         window.location.href = "' . $url . '";
+                    });
+                </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al eliminar el entrenador",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
                     });
                 </script>';
             }

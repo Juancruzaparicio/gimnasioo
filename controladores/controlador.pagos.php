@@ -40,6 +40,15 @@ class ControladorPagos{
                         window.location.href = "' . $url . '";
                     });
                 </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al agregar el pago",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
             }
 
         }
@@ -78,6 +87,15 @@ class ControladorPagos{
                     window.location.href = "' . $url . '";
                 });
             </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al editar el pago",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
             }
         }
     }
@@ -101,6 +119,15 @@ class ControladorPagos{
                         timer: 1500
                     }).then(() => {
                         window.location.href = "' . $url . '";
+                    });
+                </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al eliminar el pago",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
                     });
                 </script>';
             }

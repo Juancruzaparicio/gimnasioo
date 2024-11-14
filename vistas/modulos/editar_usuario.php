@@ -29,9 +29,8 @@ $usuario = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
                     value="<?php echo $usuario["username"]; ?>">
                   </div>
                   <div class="form-group">
-                    <label for="contra_usuario">Contraseña</label>
-                    <input required type="password" class="form-control" name="contra_usuario" placeholder="******" 
-                    value="<?php echo $usuario["contra"]; ?>">
+                    <label for="contra_usuario">Nueva Contraseña</label>
+                    <input required type="password" class="form-control" name="contra_usuario" placeholder="******">
                   </div>
                   <div class="form-group">
                     <label for="nombre_usuario">Nombre</label>

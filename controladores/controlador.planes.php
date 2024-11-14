@@ -40,6 +40,15 @@ class ControladorPlanes{
                         window.location.href = "' . $url . '";
                     });
                 </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al agragar el plan",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
             }
 
         }
@@ -78,6 +87,15 @@ class ControladorPlanes{
                     window.location.href = "' . $url . '";
                 });
             </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al editar el plan",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
             }
         }
     }
@@ -101,6 +119,15 @@ class ControladorPlanes{
                         timer: 1500
                     }).then(() => {
                         window.location.href = "' . $url . '";
+                    });
+                </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al eliminar el plan",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
                     });
                 </script>';
             }

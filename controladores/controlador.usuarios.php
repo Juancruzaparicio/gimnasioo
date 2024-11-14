@@ -77,23 +77,18 @@ class ControladorUsuarios{
                         window.location.href = "' . $url . '";
                     });
                 </script>';
-            } else {
-                echo '<script>
-                    fncSweetAlert(
-                    "error",
-                    "Este usuario se encuentra en uso. Por favor, ingresa uno distinto!",
-                    "' . $_SERVER['HTTP_REFERER'] . '"
-                    );
-                    </script>';
             }
         }
     }
     static public function ctrEditarUsuarios()
     {
-        $tabla = "usuarios";
+            $tabla = "usuarios";
 
         if (isset($_POST["id_usuario"])) {
-            $contra_encriptada = password_hash($_POST["contra_usuario"], PASSWORD_BCRYPT);
+            
+                
+            $contra_encriptada = password_hash($_POST["contra_usuario"], PASSWORD_DEFAULT);
+
             $datos = array(
                 "username" => $_POST["usuario"],
                 "contra" => $contra_encriptada,
@@ -119,6 +114,15 @@ class ControladorUsuarios{
                     window.location.href = "' . $url . '";
                 });
             </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al editar el usuario",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
             }
         }
     }
@@ -142,6 +146,15 @@ class ControladorUsuarios{
                         timer: 1500
                     }).then(() => {
                         window.location.href = "' . $url . '";
+                    });
+                </script>';
+            } else {
+                echo '<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Hubo un error al eliminar el usuario",
+                        text: "Por favor, inténtalo de nuevo",
+                        confirmButtonText: "Aceptar"
                     });
                 </script>';
             }
